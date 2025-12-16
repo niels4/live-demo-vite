@@ -1,12 +1,33 @@
 const RootPage = () => {
   return (
-    <div data-testid="root-view">
-      <h1>HOME</h1>
-      <p>This is the root page of the app</p>
+    <main>
+      <h1>Live Demo - Vanilla JS</h1>
       <p>
-        Here is a <a href="#page-1">Link to page 1</a>
+        A demo of a live coding environment using &nbsp;
+        <a target="_blank" href="https://github.com/niels4/websocket-text-relay">
+          websocket-text-relay
+        </a>
+        .
+        <br />
+        Built with Vite, Typescript, and React. Live editing (hot module reloading as you type, no need to
+        save the file) provided by &nbsp;
+        <a target="_blank" href="https://github.com/niels4/vite-plugin-websocket-text-relay">
+          vite-plugin-websocket-text-relay
+        </a>
       </p>
-    </div>
+
+      <section>
+        <header>
+          <h2>Basics</h2>
+          <p>Examples of basic webapp features such as routing, links, and URL search parameters</p>
+        </header>
+
+        <nav>
+          <a href="#basics/search-params?count=7">Search Params</a>
+          <p>Example of reading and setting URL search parameters</p>
+        </nav>
+      </section>
+    </main>
   )
 }
 

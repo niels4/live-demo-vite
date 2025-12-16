@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { getRouteAndSearchString, trimSlashes } from "./router-util"
+import { useCallback, useEffect, useState } from "react"
+import { createFullHash, getRouteAndSearchString, trimSlashes } from "./router-util"
 
 let currentRoute = ""
 let currentSearchString = ""
@@ -80,4 +80,23 @@ export const useSearchParams = () => {
   }, [setSearchParams])
 
   return searchParams
+}
+
+// export a hook that returns a function to update search parameters
+// will merge with existing parameters
+// to delete a parameter, set the value to null
+export type SetSearchParamsObject = Record<string, string | number | null>
+
+export const useSetSearchParams = () => {
+  return useCallback((paramUpdates: SetSearchParamsObject) => {
+    const updatedParams = new URLSearchParams(currentSearchParams)
+    for (const [key, value] of Object.entries(paramUpdates)) {
+      if (value == null) {
+        updatedParams.delete(key)
+      } else {
+        updatedParams.set(key, String(value))
+      }
+    }
+    window.location.hash = createFullHash(currentRoute, updatedParams.toString())
+  }, [])
 }

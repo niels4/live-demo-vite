@@ -40,6 +40,7 @@ html {
 }
 
 body {
+  background-color: hsl(212, 90%, 90%);
   display: grid;
   margin: 0;
 }
@@ -48,13 +49,68 @@ body {
   display: grid;
   position: relative;
   font-family: sans-serif;
-  background-color: #242424;
-  color: #eee;
   padding: 24px;
-
-  a {
-    color: hsl(200, 50%, 50%);
-  }
 }
 
 /* *** */
+
+/* Some default styles for the link pages */
+
+h1 {
+  color: hsl(320 90% 40%);
+  margin-bottom: 16px;
+}
+
+h2 {
+  margin-bottom: 8px;
+}
+
+a {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+section {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wrapper {
+  font-family: sans-serif;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  align-items: start;
+}
+
+button {
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: hsl(165, 50%, 80%);
+  border-radius: 8px;
+  border: 1px solid hsl(165, 80%, 20%);
+  color: hsl(165, 80%, 15%);
+  transition: all 0.2s;
+}
+
+button:hover {
+  filter: brightness(0.94);
+}
+
+button:active {
+  filter: brightness(0.74);
+  transform: translate(0, 1px) scale(0.99);
+}
+
+.button_row {
+  display: flex;
+  gap: 24px;
+}
