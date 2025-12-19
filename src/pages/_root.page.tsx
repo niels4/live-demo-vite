@@ -1,13 +1,14 @@
 const RootPage = () => {
   return (
     <main>
-      <h1>Live Demo - Vanilla JS</h1>
+      <h1>Live Demo - Vite</h1>
       <p>
         A demo of a live coding environment using &nbsp;
         <a target="_blank" href="https://github.com/niels4/websocket-text-relay">
           websocket-text-relay
         </a>
         .
+        <br />
         <br />
         Built with Vite, Typescript, and React. Live editing (hot module reloading as you type, no need to
         save the file) provided by &nbsp;
