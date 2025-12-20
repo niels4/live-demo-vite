@@ -18,7 +18,10 @@ export default function SearchParamsPage() {
       <h1>Search Params Example</h1>
 
       <p>
-        <strong>Clicks:</strong>&nbsp;<span id="click-count">{count}</span>
+        <strong>Clicks:</strong>&nbsp;
+        <span data-testid="click-count" id="click-count">
+          {count}
+        </span>
       </p>
 
       <div className="button_row">
