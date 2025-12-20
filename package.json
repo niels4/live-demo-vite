@@ -15,7 +15,7 @@
     "test:run": "npm run test:watch -- --run",
     "test:ui": "npm run test:watch -- --ui",
     "test:watch:browser": "vitest --project browser --coverage",
-    "test:run:browser": "npm run test:browser:watch -- --run",
+    "test:run:browser": "npm run test:watch:browser -- --run",
     "test": "npm run lint && npm run typecheck && npm run test:run",
     "build": "tsc -b && vite build",
     "preview": "vite preview"

@@ -1,6 +1,6 @@
 import { renderHook, updateLocationHash } from "#test"
 import { beforeAll, describe, expect, it } from "vitest"
-import { useSearchParams } from "./router-hooks"
+import { useSearchParams, useSetSearchParams } from "./router-hooks"
 
 describe("Router - search params", () => {
   describe("useSearchParams", () => {
@@ -42,7 +42,7 @@ describe("Router - search params", () => {
       })
     })
 
-    describe.only("when changing search params", () => {
+    describe("when changing search params", () => {
       const searchString = "?param1=value1&param2=value2"
       const expected = new URLSearchParams(searchString)
 
@@ -65,6 +65,38 @@ describe("Router - search params", () => {
         await updateLocationHash(searchString3)
         // should not update anymore after unmounting
         expect(result.current).toEqual(expected2)
+      })
+    })
+  })
+
+  describe("useSetSearchParams", () => {
+    describe("when the search string is empty", () => {
+      const startingHash = ""
+      const expectedHash = "#?param1=value1&param2=val2"
+      beforeAll(async () => {
+        await updateLocationHash(startingHash)
+      })
+
+      it("should set the search string in the url hash to contain the key value pairs", async () => {
+        const { result } = await renderHook(() => useSetSearchParams())
+        const setSearchParams = result.current
+        setSearchParams({ param1: "value1", param2: "val2" })
+        expect(window.location.hash).toEqual(expectedHash)
+      })
+    })
+
+    describe("when the search string already contains values", () => {
+      const startingHash = "#?param1=value1&param2=val2&param3=three"
+      const expectedHash = "#?param1=value1&param3=four"
+      beforeAll(async () => {
+        await updateLocationHash(startingHash)
+      })
+
+      it("should update any non values, delete any null values, and leave unchanged params the same", async () => {
+        const { result } = await renderHook(() => useSetSearchParams())
+        const setSearchParams = result.current
+        setSearchParams({ param2: null, param3: "four" })
+        expect(window.location.hash).toEqual(expectedHash)
       })
     })
   })

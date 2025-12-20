@@ -1,6 +1,6 @@
 const RootPage = () => {
   return (
-    <main>
+    <main data-testid="root-view">
       <h1>Live Demo - Vite</h1>
       <p>
         A demo of a live coding environment using &nbsp;

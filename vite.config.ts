@@ -15,7 +15,7 @@ export default defineConfig({
   test: {
     coverage: {
       include: allSourceFiles,
-      exclude: ["src/test/*.{ts,tsx}", "scripts/**/*.script.ts"],
+      exclude: ["src/test/*.{ts,tsx}", "scripts/**/*.script.ts", ".local"],
     },
 
     projects: [
