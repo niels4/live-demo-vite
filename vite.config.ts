@@ -1,8 +1,9 @@
 /// <reference types="vitest/config" />
-import react from "@vitejs/plugin-react-swc"
+import { defineConfig } from 'vite'
 import { playwright } from "@vitest/browser-playwright"
-import { defineConfig } from "vite"
-import websocketTextRelay from "vite-plugin-websocket-text-relay"
+import react, { reactCompilerPreset } from '@vitejs/plugin-react'
+import babel from '@rolldown/plugin-babel'
+import wtr from "vite-plugin-websocket-text-relay"
 
 const allSourceFiles = ["src/**/*.{ts,tsx}", "scripts/**/*.{ts,tsx}"]
 const browserTestFiles = "src/**/*.test.{ts,tsx}"
@@ -10,7 +11,11 @@ const nodeTestFiles = "scripts/**/*.test.{ts,tsx}"
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), websocketTextRelay()],
+  plugins: [
+    react(),
+    babel({ presets: [reactCompilerPreset()] }),
+    wtr()
+  ],
 
   test: {
     coverage: {

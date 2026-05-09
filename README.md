@@ -1,6 +1,6 @@
 # Live Demo - Vite
 
-This project is an example of how I would set up a Typescript React application in a professional environment.
+Example React Typescript project using vite and `vite-plugin-websocket-text-relay`.
 
 - Typescript for typechecking
 - Eslint for linting
@@ -17,10 +17,3 @@ npm install
 npm test
 npm start
 ```
-
-## TODO
-
-This project is not complete. I still need to:
-
-- Add more page examples and documentation on how to create new routes.
-- Add documentation explaining how to use the websocket-text-relay plugin with your text editor
